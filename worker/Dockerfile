@@ -6,7 +6,7 @@ ENV TORCH_CUDA_ARCH_LIST="8.0;8.6;8.9" FORCE_CUDA=1 MAX_JOBS=2
 RUN git clone --depth 1 https://github.com/VAST-AI-Research/TripoSR.git /app/TripoSR
 RUN pip install --no-cache-dir setuptools==69.5.1 wheel \
  && pip install --no-cache-dir -r /app/TripoSR/requirements.txt \
- && pip install --no-cache-dir runpod requests
+ && pip install --no-cache-dir runpod requests onnxruntime pooch
 ENV PYTHONPATH=/app/TripoSR
 COPY handler.py /app/handler.py
 CMD ["python", "-u", "/app/handler.py"]
